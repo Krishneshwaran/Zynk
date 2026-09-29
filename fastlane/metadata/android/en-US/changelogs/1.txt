@@ -1,0 +1,7 @@
+First release.
+
+- Sign in with Google
+- Pick any file, it uploads to Google Drive automatically
+- File is shared publicly (anyone with the link)
+- Shareable link is copied to the clipboard
+- Local upload history with copy / delete / clear

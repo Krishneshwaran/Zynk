@@ -1,0 +1,28 @@
+QuickShare is a tiny, no-nonsense uploader for your phone.
+
+Pick any file — a photo, a PDF, a video, a zip — and QuickShare uploads it to
+your own Google Drive automatically, sets it to "anyone with the link can view",
+and copies the shareable link to your clipboard. Done in one tap.
+
+WHAT IT DOES
+
+• Sign in with Google — access is limited to Drive, nothing else
+• Choose any file type from your phone
+• Automatic upload the moment you pick the file
+• The file is made public (anyone with the link can view)
+• The shareable link is copied to your clipboard and shown on screen
+• Upload history saved on your phone — tap to copy a link again, or clear it
+• Handles Google's permission expiry automatically, no errors
+
+NO NONSENSE
+
+• No account of its own, no server, no tracking, no ads
+• Your file goes straight from your phone to your own Google Drive
+• Nothing is stored anywhere except your local upload history
+• Minimal white + black interface — just the buttons you need
+
+PRIVACY
+
+QuickShare has no backend. Your file is uploaded directly to your own Google
+Drive using Google's official API. The only data kept on the device is a local
+list of file names, links and timestamps.

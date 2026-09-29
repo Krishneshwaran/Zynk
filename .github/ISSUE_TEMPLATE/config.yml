@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Google Cloud / OAuth setup help
+    url: https://github.com/OWNER/QuickShare/blob/main/README.md#2-google-cloud-setup-one-time-required
+    about: Sign-in errors (403, permission problem) are usually a Google Cloud config issue — check the README first.

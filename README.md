@@ -1,51 +1,59 @@
 # QuickShare
 
-A tiny native Android app: pick any file → it uploads to **your Google Drive automatically**, is **shared publicly**, the **link is copied to your clipboard**, and every upload is saved to a local **history**.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Min SDK](https://img.shields.io/badge/Min%20SDK-26-3DDC84.svg)](https://developer.android.com/about/versions/oreo)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.2.10-7F52FF.svg)](https://kotlinlang.org)
+[![Platform](https://img.shields.io/badge/Platform-Android-3DDC84.svg)](https://www.android.com)
 
-Minimal Material 3 UI — white background, black accents. No clutter, no accounts of its own.
+**Pick a file → it's on your Drive, public, and the link is already on your clipboard.**
+
+QuickShare is a tiny native Android app with no server, no account of its own, and no
+clutter. You sign in with Google, choose any file, and it uploads to **your own Google
+Drive**, sets it to *anyone with the link can view*, copies the link, and remembers it
+in a local history.
 
 ---
 
-## Features
+## Features ✨
 
-- Sign in with Google (Drive access only — no server, nothing leaves your device except the upload)
-- Pick **any** file type (images, PDF, video, zip, …)
-- **Automatic** upload to Google Drive the moment you pick a file
-- **One tap → public**: the file is set to *anyone with the link can view*
-- Link is **auto-copied to the clipboard** and shown on screen
-- **History** of every upload (SQLite) — tap to copy the link again, ✕ to remove, *Clear* to wipe
-- Handles Google's 7-day token expiry **automatically** (asks for permission again by itself)
+- **Sign in with Google** — only the Drive scope, nothing else
+- **Any file type** — photos, PDFs, videos, zips, documents
+- **Automatic upload** — starts the instant you pick the file
+- **Public link** — file is set to *anyone with the link can view*
+- **Auto-copied** — the shareable link lands in your clipboard and on screen
+- **History** — every upload saved locally; tap to copy again, ✕ to remove, *Clear* to wipe
+- **Self-healing** — re-asks for Drive permission automatically when Google's 7-day grant expires
+- **Minimal UI** — white background, black accents, Material 3
 
-## Tech
+## Screenshots
 
-Kotlin · XML views · Material 3 · RecyclerView · `SQLiteOpenHelper` · Google Sign-In (`play-services-auth`) · OkHttp (Drive REST API)
-
-Min SDK 26 (Android 8.0) · Target SDK 36
+| | | |
+|:---:|:---:|:---:|
+| ![Home](asset/screenshot/01.png) | ![Signed in](asset/screenshot/02.png) | ![Uploading](asset/screenshot/03.png) |
+| ![Done](asset/screenshot/04.png) | ![History](asset/screenshot/05.png) | ![Link](asset/screenshot/06.png) |
 
 ---
 
 ## Requirements
 
-- Android Studio (or a JDK 17+ and the Android SDK)
+- Android Studio (or JDK 17 + the Android SDK)
 - A Google account
-- A Google Cloud project (free) — see below
-
----
+- A free Google Cloud project — see below
 
 ## 1. Build the app
 
 ```bash
-git clone https://github.com/<you>/QuickShare.git
+git clone https://github.com/OWNER/QuickShare.git
 cd QuickShare
 ```
 
-Open the folder in **Android Studio** → let Gradle sync → **Run ▶**.
+Open in **Android Studio** → let Gradle sync → **Run ▶**.
 
-Or from the command line:
+Or from the terminal:
 
 ```bash
 ./gradlew assembleDebug
-# output: app/build/outputs/apk/debug/app-debug.apk
+# → app/build/outputs/apk/debug/app-debug.apk
 ```
 
 On Windows PowerShell you may first need:
@@ -54,38 +62,39 @@ On Windows PowerShell you may first need:
 $env:JAVA_HOME = "C:\Program Files\Android\Android Studio\jbr"
 ```
 
----
+Every push to `main` also builds automatically via GitHub Actions
+([`.github/workflows/android.yml`](.github/workflows/android.yml)) — grab the APK
+from the workflow's **Artifacts**.
 
 ## 2. Google Cloud setup (one-time, required)
 
-The app talks directly to Google Drive, so you must register it once with Google.
-**Without this step, sign-in returns `Error 403: access_denied`.**
+The app talks directly to Google Drive, so you must register it once.
+**Without this step, sign-in fails with `Error 403: access_denied`.**
 
 ### a. Create a project & enable the Drive API
 
-1. <https://console.cloud.google.com/> → **New Project** → name it → **Create**
+1. <https://console.cloud.google.com/> → **New Project** → **Create**
 2. **APIs & Services → Library** → search **Google Drive API** → **Enable**
 
 ### b. OAuth consent screen
 
-1. **APIs & Services → OAuth consent screen**
-2. User type **External** → **Create**
-3. App name (e.g. `QuickShare`), support email, developer contact → **Save and Continue**
-4. **Scopes → Add or Remove Scopes** — add:
+1. **APIs & Services → OAuth consent screen** → User type **External** → **Create**
+2. App name, support email, developer contact → **Save and Continue**
+3. **Scopes → Add or Remove Scopes**, add:
    - `https://www.googleapis.com/auth/userinfo.email`
    - `https://www.googleapis.com/auth/drive.file`
-5. **Test users → Add users** → add every Gmail address that should be able to sign in → **Save**
+4. **Test users → Add users** → every Gmail that should be able to sign in → **Save**
 
-> `drive.file` is a *sensitive* scope, so while the app is in **Testing** only listed test users can use it (up to 100).
-> Want **anyone** to sign in instead? Click **Publish app** — users then see a
-> *"Google hasn't verified this app"* warning and tap **Advanced → Go to \<app name\>**.
+> `drive.file` is a *sensitive* scope. While the app is in **Testing** only listed test
+> users can sign in (up to 100). Want **anyone** to sign in? Click **Publish app** —
+> users then tap *Advanced → Go to \<app name\>* on the unverified-app warning.
 
 ### c. Android OAuth client
 
 1. **APIs & Services → Credentials → Create Credentials → OAuth client ID**
 2. Application type: **Android**
 3. **Package name:** `com.quickshare.app`
-4. **SHA-1 certificate fingerprint:** your own debug fingerprint — get it with:
+4. **SHA-1 certificate fingerprint** — your own debug fingerprint:
 
 ```bash
 keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android
@@ -99,27 +108,23 @@ Windows (Android Studio's bundled JDK):
   -alias androiddebugkey -storepass android
 ```
 
-Or in Android Studio: **Gradle sidebar → Tasks → android → signingReport**.
+Or in Android Studio: **Gradle → Tasks → android → signingReport**.
 
-> There is **no client ID to paste into the code** — Play Services finds this credential
-> automatically from your package name + SHA-1. A mismatch shows up as
+> There is **no client ID to paste into the code** — Play Services finds this
+> credential from your package name + SHA-1. A mismatch shows up as
 > `Google Drive permission problem: …` in the app.
-
----
 
 ## 3. How to use it
 
-1. Open **QuickShare** → **Sign in with Google** → pick your account → **Allow** (twice if asked: sign-in + Drive)
+1. **Sign in with Google** → pick your account → **Allow**
 2. **Choose file to upload** → pick anything from your phone
-3. Wait a second — it uploads, makes the file public, and copies the link
-4. The link appears on screen; the file also appears under **Recent Uploads**
+3. Wait a second — it uploads, makes the file public, copies the link
+4. Find it under **Recent Uploads**
    - tap the row → open the link in the browser
-   - tap 🗙 → remove it from history (the Drive file stays)
+   - tap ✕ → remove it from history (the Drive file stays)
    - **Clear** → wipe the whole history
 
-The file lands in **your own** Google Drive, in the root folder, as a link anyone can view.
-
----
+The file lands in **your own** Google Drive root, shareable by anyone with the link.
 
 ## 4. Release build (optional)
 
@@ -127,12 +132,34 @@ The file lands in **your own** Google Drive, in the root folder, as a link anyon
 ./gradlew assembleRelease
 ```
 
-The release APK is **unsigned** until you add a signing config. If you create a release
-keystore, you must also add a **second Android OAuth client** in Google Cloud using the
-release keystore's SHA-1 — otherwise sign-in will fail on the release build.
+The release APK is unsigned until you add a signing config. If you create a release
+keystore, add a **second Android OAuth client** in Google Cloud using that keystore's
+SHA-1, or sign-in will fail on the release build.
 
 ```bash
 keytool -genkey -v -keystore release.keystore -alias quickshare -keyalg RSA -keysize 2048 -validity 10000
+```
+
+> ⚠️ Never commit `*.keystore` / `*.jks`.
+
+## Publishing to Google Play
+
+Store listing text already lives in
+[`fastlane/metadata/android/en-US/`](fastlane/metadata/android/en-US) — title,
+short/full description, and the v1 changelog.
+
+Before publishing you still need to:
+
+1. Replace the placeholders in `contact_email.txt`, `contact_website.txt`,
+   `privacy_policy_url.txt`
+2. Drop in `icon.png` (512×512), `featureGraphic.png` (1024×500) and phone screenshots
+   under `images/`
+3. Publish the OAuth consent screen **and complete Google's scope verification** for
+   `drive.file` — Play will reject an unverified app that requests a sensitive scope
+4. Ship an **`.aab`**, not an APK:
+
+```bash
+./gradlew bundleRelease
 ```
 
 ---
@@ -140,11 +167,26 @@ keytool -genkey -v -keystore release.keystore -alias quickshare -keyalg RSA -key
 ## Project structure
 
 ```
-app/src/main/java/com/quickshare/app/
-├── MainActivity.kt       UI, sign-in, upload flow, clipboard, history
-├── DriveService.kt       OAuth token, multipart upload, "make public", share link
-├── HistoryAdapter.kt     RecyclerView adapter for the history list
-└── data/HistoryDb.kt     SQLiteOpenHelper + HistoryItem
+.
+├── .github/
+│   ├── workflows/android.yml       CI: builds the APK, publishes tagged releases
+│   ├── ISSUE_TEMPLATE/             bug report + feature request forms
+│   └── PULL_REQUEST_TEMPLATE.md
+├── asset/screenshot/               README screenshots
+├── fastlane/metadata/              Google Play store listing
+├── app/src/main/
+│   ├── java/com/quickshare/app/
+│   │   ├── MainActivity.kt         UI, sign-in, upload flow, clipboard, history
+│   │   ├── DriveService.kt         OAuth token, multipart upload, make public, link
+│   │   ├── HistoryAdapter.kt       RecyclerView adapter
+│   │   └── data/HistoryDb.kt       SQLiteOpenHelper + HistoryItem
+│   ├── res/                        layouts, drawables, themes (white + black)
+│   └── AndroidManifest.xml
+├── CONTRIBUTING.md
+├── CODE_OF_CONDUCT.md
+├── PRIVACY_POLICY.md
+├── LICENSE                         MIT
+└── README.md
 ```
 
 | Concern | Where |
@@ -155,26 +197,34 @@ app/src/main/java/com/quickshare/app/
 | Share link | `DriveService.shareLink()` → `https://drive.google.com/file/d/{id}/view?usp=sharing` |
 | History storage | `data/HistoryDb.kt` (table `history`) |
 
----
-
 ## Troubleshooting
 
 | Symptom | Cause / fix |
 |---|---|
-| `Error 403: access_denied` on sign-in | Your account is not a **test user**. Add it in OAuth consent screen → Test users, or click **Publish app**. |
-| `Google Drive permission problem: …` | Package name or SHA-1 doesn't match the Android OAuth client. Re-check `com.quickshare.app` and your debug SHA-1 (can take ~5 min to apply). |
+| `Error 403: access_denied` on sign-in | Not a test user. Add it under OAuth consent screen → Test users, or click **Publish app**. |
+| `Google Drive permission problem: …` | Package name or SHA-1 doesn't match the Android OAuth client. Re-check `com.quickshare.app` and your debug SHA-1 (~5 min to apply). |
 | *"Google hasn't verified this app"* | Expected while unverified. Tap **Advanced → Go to \<app\>**. Complete Google's verification to remove it. |
-| Sign-in asks for permission again every ~7 days | Normal — refresh tokens expire after 7 days while the app is in *Testing*. The app re-asks automatically. |
-| `Drive error (HTTP 4xx)` in red text | The message includes Google's explanation — usually quota, network, or a permission change. |
+| Asks for permission again every ~7 days | Normal — refresh tokens expire after 7 days in *Testing*. The app re-asks automatically. |
+| `Drive error (HTTP 4xx)` in red text | Google's explanation is included — usually quota, network, or a permission change. |
 
----
+## Contributing
+
+Contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md) for the workflow and
+[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for community standards.
+
+1. Open an issue first so the change is agreed before the code exists
+2. Fork and branch from `main`
+3. Make sure `./gradlew assembleDebug` passes
+4. Open a PR and fill in the template
 
 ## Privacy
 
-The app has no backend. Your file is uploaded straight from your phone to **your own Google Drive** using Google's official API. The only data stored on the phone is the local upload history (file name, link, timestamp) in a SQLite database — clearing it from the app removes it.
+No backend, no trackers, no analytics. Your file goes straight from your phone to your
+own Google Drive over Google's official API. The only thing stored on the device is a
+local list of file names, links and timestamps — clear it from the app or uninstall.
 
----
+Full details: [PRIVACY_POLICY.md](PRIVACY_POLICY.md)
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE) — free to use, modify, and redistribute.

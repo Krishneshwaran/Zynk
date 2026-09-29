@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/Theme.QuickShare">
+        android:theme="@style/Theme.Zynk">
 
         <activity
             android:name=".MainActivity"

@@ -1,6 +1,6 @@
-QuickShare is a tiny, no-nonsense uploader for your phone.
+Zynk is a tiny, no-nonsense uploader for your phone.
 
-Pick any file — a photo, a PDF, a video, a zip — and QuickShare uploads it to
+Pick any file — a photo, a PDF, a video, a zip — and Zynk uploads it to
 your own Google Drive automatically, sets it to "anyone with the link can view",
 and copies the shareable link to your clipboard. Done in one tap.
 
@@ -23,6 +23,6 @@ NO NONSENSE
 
 PRIVACY
 
-QuickShare has no backend. Your file is uploaded directly to your own Google
+Zynk has no backend. Your file is uploaded directly to your own Google
 Drive using Google's official API. The only data kept on the device is a local
 list of file names, links and timestamps.

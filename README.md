@@ -1,4 +1,4 @@
-# QuickShare
+# Zynk
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Min SDK](https://img.shields.io/badge/Min%20SDK-26-3DDC84.svg)](https://developer.android.com/about/versions/oreo)
@@ -7,7 +7,7 @@
 
 **Pick a file → it's on your Drive, public, and the link is already on your clipboard.**
 
-QuickShare is a tiny native Android app with no server, no account of its own, and no
+Zynk is a tiny native Android app with no server, no account of its own, and no
 clutter. You sign in with Google, choose any file, and it uploads to **your own Google
 Drive**, sets it to *anyone with the link can view*, copies the link, and remembers it
 in a local history.
@@ -43,8 +43,8 @@ in a local history.
 ## 1. Build the app
 
 ```bash
-git clone https://github.com/OWNER/QuickShare.git
-cd QuickShare
+git clone https://github.com/OWNER/Zynk.git
+cd Zynk
 ```
 
 Open in **Android Studio** → let Gradle sync → **Run ▶**.

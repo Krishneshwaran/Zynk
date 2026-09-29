@@ -1,8 +1,8 @@
-# Privacy Policy — QuickShare
+# Privacy Policy — Zynk
 
 **Last updated:** 29 September 2026
 
-QuickShare is a small Android application that uploads files from your device to
+Zynk is a small Android application that uploads files from your device to
 your own Google Drive. This policy explains exactly what it does and does not do.
 
 ## What the app accesses
@@ -11,7 +11,7 @@ your own Google Drive. This policy explains exactly what it does and does not do
   signed in with.
 - **Google Drive (`drive.file` scope)** — used to upload the file you picked and
   to make that file viewable by anyone with the link.
-- **Files you explicitly select** — QuickShare reads a file only after you choose
+- **Files you explicitly select** — Zynk reads a file only after you choose
   it with the system file picker, and only to upload it.
 
 The app requests no other Google scopes and no other device permissions.
@@ -37,7 +37,7 @@ Uninstalling the app removes this database.
 ## Where your file goes
 
 Your file is uploaded **directly from your device to your own Google Drive**
-using Google's official Drive API. QuickShare has **no server**: at no point does
+using Google's official Drive API. Zynk has **no server**: at no point does
 any file or metadata pass through infrastructure we control.
 
 ## Third parties
@@ -59,5 +59,5 @@ Any change to this policy will be published in this file with an updated date.
 ## Contact
 
 Questions? Open an issue at
-[https://github.com/OWNER/QuickShare/issues](https://github.com/OWNER/QuickShare/issues)
+[https://github.com/OWNER/Zynk/issues](https://github.com/OWNER/Zynk/issues)
 or email **[info@ruroxz.in](mailto:info@ruroxz.in)**.

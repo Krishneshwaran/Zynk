@@ -43,7 +43,7 @@ jobs:
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: QuickShare-debug-apk
+          name: Zynk-debug-apk
           path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
 
@@ -59,14 +59,14 @@ jobs:
       - name: Download APK
         uses: actions/download-artifact@v4
         with:
-          name: QuickShare-debug-apk
+          name: Zynk-debug-apk
           path: dist
 
       - name: Rename APK
-        run: cp dist/app-debug.apk "dist/QuickShare-${GITHUB_REF_NAME}.apk"
+        run: cp dist/app-debug.apk "dist/Zynk-${GITHUB_REF_NAME}.apk"
 
       - name: Create release
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/QuickShare-*.apk
+          files: dist/Zynk-*.apk
           generate_release_notes: true

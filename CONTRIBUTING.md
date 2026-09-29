@@ -1,6 +1,6 @@
-# Contributing to QuickShare
+# Contributing to Zynk
 
-Thanks for your interest in improving QuickShare! 🎉
+Thanks for your interest in improving Zynk! 🎉
 Please read this before opening a pull request, and also read our
 [Code of Conduct](CODE_OF_CONDUCT.md).
 

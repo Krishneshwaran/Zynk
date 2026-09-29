@@ -76,7 +76,7 @@ object DriveService {
         val mimeType = resolver.getType(uri) ?: "application/octet-stream"
 
         val metadata = JSONObject().put("name", fileName).toString()
-        val boundary = "quickshare_" + System.currentTimeMillis()
+        val boundary = "zynk_" + System.currentTimeMillis()
         val body = RelatedMultipartBody(
             boundary = boundary,
             metadata = metadata,

@@ -7,5 +7,5 @@
     <color name="divider">#FFE6E6E6</color>
     <color name="surface">#FFF7F7F7</color>
     <color name="error">#FFC62828</color>
-    <color name="ic_bg">#FF000000</color>
+    <color name="ic_bg">#FFFFFFFF</color>
 </resources>

@@ -20,5 +20,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "QuickShare"
+rootProject.name = "Zynk"
 include(":app")

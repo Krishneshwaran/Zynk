@@ -289,7 +289,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun copyLink(link: String, announce: Boolean = false) {
         val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
-        clipboard.setPrimaryClip(ClipData.newPlainText("QuickShare link", link))
+        clipboard.setPrimaryClip(ClipData.newPlainText("Zynk link", link))
         if (announce) {
             Snackbar.make(root, R.string.link_copied, Snackbar.LENGTH_SHORT).show()
         }

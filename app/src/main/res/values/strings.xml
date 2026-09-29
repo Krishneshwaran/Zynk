@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">QuickShare</string>
+    <string name="tagline">Upload. Share. Done.</string>
+
+    <string name="sign_in">Sign in with Google</string>
+    <string name="choose_file">Choose file to upload</string>
+    <string name="sign_out">Sign out</string>
+
+    <string name="status_idle">Pick a file and it uploads to Google Drive automatically.</string>
+    <string name="status_signin_required">Sign in with Google first, then choose a file.</string>
+    <string name="status_signing_in">Signing in…</string>
+    <string name="status_reading">Reading file…</string>
+    <string name="status_uploading">Uploading to Google Drive…</string>
+    <string name="status_sharing">Making it public…</string>
+    <string name="status_reauth">Approving Drive access…</string>
+    <string name="status_done">Done. Public link copied to clipboard.</string>
+    <string name="status_cancelled">Sign in cancelled.</string>
+
+    <string name="recent_uploads">RECENT UPLOADS</string>
+    <string name="clear">Clear</string>
+    <string name="no_uploads">No uploads yet.</string>
+    <string name="copy_link">Copy link</string>
+    <string name="link_copied">Link copied to clipboard</string>
+    <string name="open_link">Open</string>
+    <string name="history_cleared">History cleared</string>
+    <string name="remove">Remove from history</string>
+</resources>

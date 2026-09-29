@@ -20,15 +20,22 @@ fastlane/metadata/android/
         └── phoneScreenshots/    16:9 or 9:16
 ```
 
-## Replace these placeholders before publishing
+## Filled in already
 
-| File | Placeholder |
+| File | Value |
 |---|---|
-| `contact_email.txt` | your support email |
-| `contact_website.txt` | your project / website URL |
-| `privacy_policy_url.txt` | a live privacy policy URL (**required** by Play) |
+| `contact_email.txt` | `info@ruroxz.in` (support) |
+| `contact_website.txt` | `https://ruroxz.in` |
 
-Screenshots and graphics go in `images/` — see `README.md` for the upload flow.
+## Still to do
+
+| File | What's needed |
+|---|---|
+| `privacy_policy_url.txt` | confirm the `OWNER` once the GitHub repo exists (or point it at `https://ruroxz.in/privacy`) |
+| `images/icon.png` | 512×512 app icon |
+| `images/featureGraphic.png` | 1024×500 Play feature graphic |
+| `images/phoneScreenshots/` | store screenshots |
+| `changelogs/1.txt` | edit if the app name or version changes |
 
 ## Upload to Google Play
 

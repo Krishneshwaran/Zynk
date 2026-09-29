@@ -60,4 +60,4 @@ Any change to this policy will be published in this file with an updated date.
 
 Questions? Open an issue at
 [https://github.com/OWNER/QuickShare/issues](https://github.com/OWNER/QuickShare/issues)
-or email **[your-email@example.com]**.
+or email **[info@ruroxz.in](mailto:info@ruroxz.in)**.

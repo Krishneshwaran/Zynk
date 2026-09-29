@@ -27,10 +27,18 @@ in a local history.
 
 ## Screenshots
 
-| | | |
-|:---:|:---:|:---:|
-| ![Home](asset/screenshot/01.png) | ![Signed in](asset/screenshot/02.png) | ![Uploading](asset/screenshot/03.png) |
-| ![Done](asset/screenshot/04.png) | ![History](asset/screenshot/05.png) | ![Link](asset/screenshot/06.png) |
+<table>
+  <tr>
+    <td align="center" width="33%"><b>Sign in</b></td>
+    <td align="center" width="33%"><b>Choose an account</b></td>
+    <td align="center" width="33%"><b>Uploaded &amp; link copied</b></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="asset/screenshot/01.png" alt="Home screen with Sign in with Google" width="240"></td>
+    <td align="center"><img src="asset/screenshot/02.png" alt="Google account chooser" width="240"></td>
+    <td align="center"><img src="asset/screenshot/03.png" alt="Upload complete, link copied, history entry" width="240"></td>
+  </tr>
+</table>
 
 ---
 

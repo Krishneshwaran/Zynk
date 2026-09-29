@@ -1,14 +1,15 @@
 # Screenshots
 
-Drop the app screenshots for the README here.
+App screenshots used by the README's **Screenshots** section. Phone portrait,
+width 720 px (export from a 1080-wide device capture).
 
-| File | Size / ratio | Used for |
+| File | Content | Alt text / caption |
 |---|---|---|
-| `01.png` … `06.png` | 9:16 phone portrait, 1080×2340 is ideal | README screenshots section |
-| `../featureGraphic.png` | 1024×500 | Play Store / fastlane |
-| `../icon.png` | 512×512 | Play Store / fastlane |
+| `01.png` | Home screen before sign-in | Sign in |
+| `02.png` | Google "Choose an account" sheet | Choose an account |
+| `03.png` | Upload finished, link copied, entry in Recent Uploads | Uploaded & link copied |
 
-README references them as `asset/screenshot/01.png`, `02.png`, …
+The README embeds them as `asset/screenshot/01.png`, `02.png`, `03.png`.
 
-> The app icon and feature graphic belong in
-> `fastlane/metadata/android/en-US/images/`.
+> Play Store assets are separate: `../../featureGraphic.png` (1024×500) and
+> `../../icon.png` (512×512) belong in `fastlane/metadata/android/en-US/images/`.
